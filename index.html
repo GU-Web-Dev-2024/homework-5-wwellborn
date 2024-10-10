@@ -142,6 +142,35 @@
         ];
         // Add your JavaScript code here.
         // Later, move this to an external JavaScript file for better organization.
+        
+        
+
+        let viewCount=0; //view counter
+        function updateCount() //update count
+        {
+            document.getElementById("counter").innerText = `Artworks Viewed: ${viewCount}`;
+            
+        }
+
+        //panel click
+        function panelClick(event){
+            const panel = event.currentTarget; //get currently clicked panel
+            if(!panel.classList.contains("viewed"))
+            {
+                panel.classList.add("viewed");
+                panel.style.backgroundColor="red";
+                viewCount++;
+                updateCount();
+            }
+
+        }
+
+        //event listener time for each panel 
+        const artPanels = document.querySelectorAll(".art-panel");
+        artPanels.forEach(panel => {
+            panel.addEventListener("click", panelClick);
+        });
+        updateCount();
     </script>
 </body>
 
