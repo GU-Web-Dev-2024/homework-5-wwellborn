@@ -185,7 +185,24 @@
         }
         document.getElementById("reset-button").addEventListener("click", resetGallery); //reset button
         
-      
+        function addArt()
+        {
+            const randArt = newArtworks[Math.floor(Math.random()*newArtworks.length)];
+            const newPanel = document.createElement("div");
+            newPanel.classList.add("art-panel");
+            const img = document.createElement("img");
+            img.src=randArt.img;
+            img.alt = `${randArt.title} by ${randArt.artist}`;
+            const desc = document.createElement("p");
+            desc.innerText = `${randArt.title} by ${randArt.artist}`;
+
+            newPanel.appendChild(img);
+            newPanel.appendChild(desc);
+            newPanel.addEventListener("click", panelClick);
+            document.querySelector(".art-grid").appendChild(newPanel);
+        }
+
+        document.getElementById("add-art-button").addEventListener("click", addArt );
         updateCount();
     </script>
 </body>
