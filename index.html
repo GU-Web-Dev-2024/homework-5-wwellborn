@@ -167,9 +167,25 @@
 
         //event listener time for each panel 
         const artPanels = document.querySelectorAll(".art-panel");
-        artPanels.forEach(panel => {
-            panel.addEventListener("click", panelClick);
-        });
+        artPanels.forEach(panel => 
+            {
+                panel.addEventListener("click", panelClick);
+            }
+        );
+
+        function resetGallery() //reset 
+        {
+            const artPanels = document.querySelectorAll(".art-panel"); //select all panels
+            artPanels.forEach(panel=>
+                {
+                    panel.classList.remove("viewed");
+                    panel.style.backgroundColor = "#eee"; //default color and state.
+                }
+            );
+        }
+        document.getElementById("reset-button").addEventListener("click", resetGallery); //reset button
+        
+      
         updateCount();
     </script>
 </body>
