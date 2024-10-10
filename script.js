@@ -26,6 +26,14 @@ function updateCount() //update count
 //panel click
 function panelClick(event){
     const panel = event.currentTarget; //get currently clicked panel
+
+    //bonus panel removal code
+    if(removeMode)
+    {
+        panel.remove();
+    }
+    else{
+
     if(!panel.classList.contains("viewed"))
     {
         panel.classList.add("viewed");
@@ -33,7 +41,7 @@ function panelClick(event){
         viewCount++;
         updateCount();
     }
-
+    }
 }
 
 //event listener time for each panel 
@@ -75,3 +83,24 @@ function addArt()
 
 document.getElementById("add-art-button").addEventListener("click", addArt );
 updateCount();
+
+
+//bonus removal code.
+let removeMode = false;
+
+function rmToggle()
+{
+    removeMode = !removeMode;
+    const removeB = document.getElementById("remove-button");
+
+    if(removeMode)
+    {
+        removeB.style.color = "yellow";
+    }
+    else
+    {
+        removeB.style.color = "";
+    }
+}
+
+document.getElementById("remove-button").addEventListener("click", rmToggle);
